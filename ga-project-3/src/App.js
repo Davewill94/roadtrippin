@@ -1,13 +1,13 @@
 import './App.css';
 import React from 'react';
 import Header from './components/Header';
-import Map from './components/Map';
+import MapShow from './components/MapShow';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Map />
+      <MapShow />
     </div>
   );
 }
