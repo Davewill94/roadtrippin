@@ -1,10 +1,13 @@
-
 import './App.css';
+import React from 'react';
+import Header from './components/Header';
+import Map from './components/Map';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Header />
+      <Map />
     </div>
   );
 }
