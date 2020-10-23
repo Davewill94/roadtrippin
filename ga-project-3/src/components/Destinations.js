@@ -1,19 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Destinations = (props) => {
 
-    return(
-        <aside>
-            <form>
-                <label for='start'>Enter Starting City:</label>
-                <input type="text" placeholder="From" />
-                <label for="destination">Enter Destination City:</label>
-                <input type="text" placeholder="From" />
-                <input type="submit" value="Take a trip?" />
-            </form>
-        </aside>
 
-    )
+class Destinations extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            from: '',
+            to: ''
+        }
+    }
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    render() {
+        return(
+            <aside>
+                <form onSubmit={(e)=> this.props.tripSubmit(e, this.state)}>
+                    <label for='start' >Enter Starting City:</label>
+                    <input type="text" name='from' placeholder="City,State" onChange={this.handleChange}/>
+                    <label for="destination">Enter Destination City:</label>
+                    <input type="text" name='to' placeholder="City,State" onChange={this.handleChange}/>
+                    <input type="submit" value="Take a trip?" />
+                </form>
+            </aside>
+
+        )
+    }
+
 
 
 }

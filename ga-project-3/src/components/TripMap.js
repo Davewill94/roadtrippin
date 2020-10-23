@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import 'leaflet-routing-machine';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.js';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+
+import Destinations from './Destinations';
 
 
 const Wrapper = styled.div`
@@ -27,7 +30,38 @@ const Wrapper = styled.div`
           }
       }
     
-    componentDidMount(){
+    tripSubmit = (e, locations) => {
+        e.preventDefault();
+        this.getLatLng(locations)
+    }
+// Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft
+// http://www.mapquestapi.com/geocoding/v1/batch?key=Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft&location=Denver,CO&location=Boulder,CO
+
+    getLatLng = async (locations) => {
+        const resp = await axios.get(
+            `http://www.mapquestapi.com/geocoding/v1/batch?key=Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft&location=${locations.from}&location=${locations.to}`
+        )
+        let waypoints = [];
+        waypoints.push(resp.data.results[0].locations[0].latLng);
+        waypoints.push(resp.data.results[1].locations[0].latLng);
+        this.setState({
+            waypoints
+        });
+
+        this.genRoute();
+    }
+    
+    genRoute = () => {
+        L.Routing.control({
+            waypoints: [
+                L.latLng(this.state.waypoints[0].lat, this.state.waypoints[0].lng),
+                L.latLng(this.state.waypoints[1].lat, this.state.waypoints[1].lng)
+            ],
+            routeWhileDragging: true
+        }).addTo(this.map);
+    }
+
+    componentDidMount() {
       this.map = L.map('map', {
         center: [42,-90], 
         zoom: 6,
@@ -40,18 +74,16 @@ const Wrapper = styled.div`
         maxNativeZoom: 17,
       }).addTo(this.map);
 
-      L.Routing.control({
-          waypoints: [
-              L.latLng(this.state.waypoints[0].lat, this.state.waypoints[0].lng),
-              L.latLng(this.state.waypoints[1].lat, this.state.waypoints[1].lng)
-          ],
-          routeWhileDragging: true
-      }).addTo(this.map);
-
+      this.genRoute();
     }
 
     render() {
-      return <Wrapper width="600px" height="200px" id="map" />
+      return (
+          <div>
+            <Wrapper width="600px" height="200px" id="map" />
+            <Destinations tripSubmit={this.tripSubmit}/>
+          </div>
+)
     }
   }
     
