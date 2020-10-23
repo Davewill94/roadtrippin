@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import L from 'leaflet';
+import L, { routing } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -23,10 +23,11 @@ const Wrapper = styled.div`
           super(props)
 
           this.state = {
-              waypoints: [
+            waypoints: [
                   {lat: 41.523529, lng: -90.577042},
                   {lat: 41.878113, lng: -87.629799}
-                ]
+            ],
+            routingControl: null
           }
       }
     
@@ -52,13 +53,23 @@ const Wrapper = styled.div`
     }
     
     genRoute = () => {
-        L.Routing.control({
+        this.removeRoute();
+        
+        let routingControl = L.Routing.control({
             waypoints: [
                 L.latLng(this.state.waypoints[0].lat, this.state.waypoints[0].lng),
                 L.latLng(this.state.waypoints[1].lat, this.state.waypoints[1].lng)
             ],
-            routeWhileDragging: true
         }).addTo(this.map);
+        this.setState({
+            routingControl
+        })
+    }
+
+    removeRoute = () => {
+        if(this.state.routingControl != null ) {
+            this.map.removeControl(this.state.routingControl)
+        }
     }
 
     componentDidMount() {
