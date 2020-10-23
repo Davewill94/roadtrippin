@@ -18,7 +18,7 @@ React Router:
     
 
 ### STRETCH
-Spotify API: 
+Spotify API: https://developer.spotify.com/documentation/web-api/
   Based on travel time, recommend albums/podcasts to listen to.
   Give user options to choose either/and/or albums/podcasts/playlists. 
   
