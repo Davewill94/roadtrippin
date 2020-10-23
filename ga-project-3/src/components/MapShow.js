@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: ${props => props.width};
-  height" ${props => props.height};
+  height: ${props => props.height};
 `;
 
 
@@ -13,14 +13,14 @@ const Wrapper = styled.div`
     
     componentDidMount(){
       this.map = L.map('map', {
-        center: [58,16], 
+        center: [42,-90], 
         zoom: 6,
         zoomControl: false
       });
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         detectRetina: true,
-        maxZoom: 20, 
+        maxZoom: 15, 
         maxNativeZoom: 17,
       }).addTo(this.map);
 
