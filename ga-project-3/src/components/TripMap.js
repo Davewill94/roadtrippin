@@ -16,6 +16,16 @@ const Wrapper = styled.div`
 
 
   class TripMap extends Component {
+      constructor(props) {
+          super(props)
+
+          this.state = {
+              waypoints: [
+                  {lat: 41.523529, lng: -90.577042},
+                  {lat: 41.878113, lng: -87.629799}
+                ]
+          }
+      }
     
     componentDidMount(){
       this.map = L.map('map', {
@@ -32,8 +42,8 @@ const Wrapper = styled.div`
 
       L.Routing.control({
           waypoints: [
-              L.latLng(41.523529, -90.577042),
-              L.latLng(41.878113, -87.629799)
+              L.latLng(this.state.waypoints[0].lat, this.state.waypoints[0].lng),
+              L.latLng(this.state.waypoints[1].lat, this.state.waypoints[1].lng)
           ],
           routeWhileDragging: true
       }).addTo(this.map);
