@@ -10,6 +10,7 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 import Destinations from './Destinations';
+import AssideLeft from './AssideLeft';
 
 
 const Wrapper = styled.div`
@@ -57,7 +58,6 @@ const Wrapper = styled.div`
     
     genRoute = () => {
         this.removeRoute();
-
         let routingControl = L.Routing.control({
             waypoints: [
                 L.latLng(this.state.waypoints[0].lat, this.state.waypoints[0].lng),
@@ -67,12 +67,14 @@ const Wrapper = styled.div`
         this.setState({
             routingControl
         })
+
+        //the .hide() hides the instructions -> to view instructions remove the .hide()
         routingControl.on('routesfound', function(e) {
-            let routes = e.routes;
-            let summary = routes[0].summary;
-            // alert distance and time in km and hours(rounded)
-            alert('Total distance is ' + summary.totalDistance / 1000 + ' km and total time is ' + Math.round(summary.totalTime / 3600) + ' hours');
-         });
+            // let routes = e.routes;
+            // let summary = routes[0].summary;
+            // // alert distance and time in km and hours(rounded)
+            // alert('Total distance is ' + summary.totalDistance / 1000 + ' km and total time is ' + Math.round(summary.totalTime / 3600) + ' hours');
+         }).hide();
     }
 
     removeRoute = () => {
@@ -119,10 +121,16 @@ const Wrapper = styled.div`
     }
 
     render() {
+
         return (
             <div>
                 <Wrapper width="600px" height="200px" id="map" />
-                <Destinations tripSubmit={this.tripSubmit}/>
+                <Destinations tripSubmit={this.tripSubmit} />
+                {this.state != null ? 
+                    <AssideLeft routeInfo={this.state.routingControl} />
+                :
+                    <AssideLeft routeInfo={this.state.routingControl} />
+                }
             </div>    
         )
     }
