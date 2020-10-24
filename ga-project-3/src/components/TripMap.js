@@ -49,7 +49,7 @@ const Wrapper = styled.div`
         this.setState({
             waypoints
         });
-        
+
         this.map.remove();
         this.adjustMap();
         this.genRoute();
@@ -67,6 +67,12 @@ const Wrapper = styled.div`
         this.setState({
             routingControl
         })
+        routingControl.on('routesfound', function(e) {
+            var routes = e.routes;
+            var summary = routes[0].summary;
+            // alert distance and time in km and minutes
+            alert('Total distance is ' + summary.totalDistance / 1000 + ' km and total time is ' + Math.round(summary.totalTime / 3600) + ' hours');
+         });
     }
 
     removeRoute = () => {
