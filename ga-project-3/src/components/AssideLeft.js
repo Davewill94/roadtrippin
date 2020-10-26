@@ -10,11 +10,10 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 function AsideLeft (props) {
   
-       if(props.routeInfo != null) {
-         console.log(props.routeInfo._selectedRoute);  
+       if(props.directionsReady) {
+         console.log(props.routeInfo._selectedRoute.instructions);  
        } 
         
-       
 
         return (
             <div className="trips">
@@ -29,12 +28,23 @@ function AsideLeft (props) {
                         )
                     })}
                 </div>
-                {props.routeInfo != null && 
-                    <div className="trip-directions" >
-                        <p>p</p>
-                    </div>
+                <div className="directions">
+                    {props.directionsReady && 
+                        props.routeInfo._selectedRoute.instructions.map((direction, id) => {
+                            return (
+                                <div className="leaflet-routing-alt" key={id}>
+                                    <p>
+                                        {direction.text} {direction.distance < 1000 ? 
+                                        `${direction.distance} m` 
+                                        : 
+                                        `${Math.floor(direction.distance/1000)} km`}
+                                    </p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
                 
-                }
             </div>
         )
 }
