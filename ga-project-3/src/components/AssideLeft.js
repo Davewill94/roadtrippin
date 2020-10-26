@@ -28,11 +28,11 @@ class AsideLeft extends Component {
         
 
         return (
-            <div>
+            <div className="trips">
                 <div className="previous-trips">
                     {this.props.previousTrips.map((trip, id) => {
                         return (
-                            <div>
+                            <div className="old-trip">
                                 <h3>{trip.name}</h3>
                                 <p>From: {trip.from}</p>
                                 <p>To: {trip.to}</p>
