@@ -10,9 +10,9 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 function AsideLeft (props) {
   
-       if(props.directionsReady) {
-         console.log(props.routeInfo._selectedRoute.instructions);  
-       } 
+    //    if(props.directionsReady) {
+    //      console.log(props.routeInfo._selectedRoute.instructions);  
+    //    } 
         
 
         return (
@@ -28,7 +28,7 @@ function AsideLeft (props) {
                         )
                     })}
                 </div>
-                <div className="directions">
+                {/* <div className="directions">
                     {props.directionsReady && 
                         props.routeInfo._selectedRoute.instructions.map((direction, id) => {
                             return (
@@ -44,7 +44,7 @@ function AsideLeft (props) {
                         })
                     }
                 </div>
-                
+                 */}
             </div>
         )
 }

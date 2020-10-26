@@ -11,6 +11,7 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 import Destinations from './Destinations';
 import AsideLeft from './AssideLeft';
+import Directions from './Directions';
 
 
 const Wrapper = styled.div`
@@ -151,7 +152,8 @@ const Wrapper = styled.div`
             <div className="main-new-trip">
                 <div className="trip-details">
                     <Destinations tripSubmit={this.tripSubmit} />
-                    <AsideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips} directionsReady={this.state.directionsReady}/> 
+                    <AsideLeft previousTrips={this.state.previousTrips} />
+                    <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
                 </div>
                 <Wrapper width="600px" height="200px" id="map" />
                 {/* <div className="trip-details">
