@@ -88,12 +88,12 @@ const Wrapper = styled.div`
         })
 
         //the .hide() hides the instructions -> to view instructions remove the .hide()
-        routingControl.on('routesfound', function(e) {
+        // routingControl.on('routesfound', function(e) {
             // let routes = e.routes;
             // let summary = routes[0].summary;
             // // alert distance and time in km and hours(rounded)
             // alert('Total distance is ' + summary.totalDistance / 1000 + ' km and total time is ' + Math.round(summary.totalTime / 3600) + ' hours');
-         }).hide();
+        //  }).hide();
     }
 
     removeRoute = () => {
@@ -149,6 +149,10 @@ const Wrapper = styled.div`
                 </div>
 
                 <Wrapper width="600px" height="200px" id="map" />
+                {/* <div className="trip-details">
+                    <Destinations tripSubmit={this.tripSubmit} />
+                    <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
+                </div> */}
             </div>    
         )
     }
