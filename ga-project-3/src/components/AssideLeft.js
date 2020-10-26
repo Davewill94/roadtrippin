@@ -8,31 +8,19 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.js';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 
-class AsideLeft extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            instructions: props.routeInfo
-        }
-    }
-    // let instructions = [];
-    // console.log(props.routeInfo)
-    // if(props.routeInfo != null) {
-    //     console.log(props.routeInfo._selectedRoute.instructions)
-    //     instructions = props.routeInfo._selectedRoute.instructions;
-    // }
-    
-    render () {
-        console.log(this.state.instructions);
+function AsideLeft (props) {
+  
+       if(props.directionsReady) {
+         console.log(props.routeInfo._selectedRoute.instructions);  
+       } 
         
 
         return (
             <div className="trips">
                 <div className="previous-trips">
-                    {this.props.previousTrips.map((trip, id) => {
+                    {props.previousTrips.map((trip, id) => {
                         return (
-                            <div className="old-trip">
+                            <div className="old-trip" key={id}>
                                 <h3>{trip.name}</h3>
                                 <p>From: {trip.from}</p>
                                 <p>To: {trip.to}</p>
@@ -40,14 +28,25 @@ class AsideLeft extends Component {
                         )
                     })}
                 </div>
-                <div className="trip-directions" >
-                    <p>p</p>
+                <div className="directions">
+                    {props.directionsReady && 
+                        props.routeInfo._selectedRoute.instructions.map((direction, id) => {
+                            return (
+                                <div className="leaflet-routing-alt" key={id}>
+                                    <p>
+                                        {direction.text} {direction.distance < 1000 ? 
+                                        `${direction.distance} m` 
+                                        : 
+                                        `${Math.floor(direction.distance/1000)} km`}
+                                    </p>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
                 
             </div>
         )
-    }
-
 }
 
 export default AsideLeft;

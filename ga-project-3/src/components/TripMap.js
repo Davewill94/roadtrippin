@@ -10,7 +10,7 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 import Destinations from './Destinations';
-import AssideLeft from './AssideLeft';
+import AsideLeft from './AssideLeft';
 
 
 const Wrapper = styled.div`
@@ -41,19 +41,18 @@ const Wrapper = styled.div`
                     from: "Chicago, IL",
                     to: "Santa Monica, CA"
                 }
-            ]
+            ],
+            directionsReady: false
           }
       }
     
     tripSubmit = (e, locations) => {
         e.preventDefault();
-        console.log(locations)
         let previousTrips = this.state.previousTrips
         previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
         this.setState({
             previousTrips
         })
-        console.log(previousTrips)
         this.getLatLng(locations)
     }
 // Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft
@@ -83,11 +82,17 @@ const Wrapper = styled.div`
                 L.latLng(this.state.waypoints[1].lat, this.state.waypoints[1].lng)
             ],
         }).addTo(this.map);
-        this.setState({
-            routingControl
-        })
 
         //the .hide() hides the instructions -> to view instructions remove the .hide()
+        routingControl.on('routesfound', (e) =>{
+            this.setState({
+                routingControl
+            })
+            setTimeout(() => {
+                this.setState({
+                    directionsReady: true
+                })
+            }, 1)
         // routingControl.on('routesfound', function(e) {
             // let routes = e.routes;
             // let summary = routes[0].summary;
@@ -145,9 +150,8 @@ const Wrapper = styled.div`
             <div className="main-new-trip">
                 <div className="trip-details">
                     <Destinations tripSubmit={this.tripSubmit} />
-                    <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
+                    <AsideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips} directionsReady={this.state.directionsReady}/> 
                 </div>
-
                 <Wrapper width="600px" height="200px" id="map" />
                 {/* <div className="trip-details">
                     <Destinations tripSubmit={this.tripSubmit} />

@@ -156,11 +156,16 @@ form {
   border: 2px solid black;
 }
 
+
+.directions {
+  overflow-y: scroll;
+  max-height: 250px;
+}
+
 body {
   background-image: url("./images/road1.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-
 }
