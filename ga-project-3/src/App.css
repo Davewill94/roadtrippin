@@ -6,7 +6,7 @@
 }
 
 #header {
-  background: rgb(85, 85, 85);
+  background: rgb(63, 63, 63);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -14,10 +14,10 @@
   width: 100%;
 }
 
-a {
+nav a {
   text-decoration: none;
   color: white;
-  border: 2px solid rgb(57, 57, 57);
+  border: 2px solid rgb(130, 130, 130);
   padding: 6px;
   border-radius: 4px;
   margin: 10px;
@@ -31,7 +31,7 @@ nav {
   width: 30vw;
 }
 
-a:hover {
+nav a:hover {
   background-color: rgb(0, 167, 205);
 }
 
@@ -54,21 +54,60 @@ a:hover {
   border: 2px solid rgb(57, 57, 57);
 }
 
+#aboutmap {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  height: 100%
+}
+
 #homepage a {
-  background: gray;
+  background: rgb(94, 94, 94);
+  font-size: 22px;
+  padding: 6px 18px;
+  font-weight: bold;
+  border-radius: 6px;
 }
 
 #homepage a:hover {
-  background-color: rgb(0, 167, 205);
+  background-color: rgb(249, 220, 0);
+  color: rgb(62, 62, 62);
 }
+
 
 #homepage {
   display: flex;
-  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  flex-direction: column;
 }
+#start {
+  width: 100px;
+  margin: -120px 0 0 -80px;
+}
+
+nav .active {
+  background: rgb(0, 167, 205);
+}
+
+#links {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid rgb(85, 20, 215);
+  background: rgba(139, 174, 196, 0.845);
+  height: 40vh;
+  padding: 20px;
+  width: 30vw;
+  height: 60vh;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 25px;
+  margin-top: 100px;
+}
+
 
 .main-new-trip {
   display: flex;
@@ -79,9 +118,9 @@ a:hover {
 .trip-details {
   display: flex;
   flex-flow: row wrap;
-  width: 40vw;
+  width: 20vw;
   box-shadow:inset 0px 1px 3px 0px #91b8b3;
-	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background:linear-gradient(to bottom, #919b98 5%, #6c7c7c 100%);
 	background-color:#768d87;
 	border-radius:5px;
 	border:1px solid #566963;
@@ -91,9 +130,10 @@ a:hover {
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
-	padding:11px 23px;
+	padding:11px 15px;
 	text-decoration:none;
   text-shadow:0px -1px 0px #2b665e;
+  margin: 50px 20px 0 20px;
 
 }
 aside {
@@ -116,7 +156,16 @@ form {
   border: 2px solid black;
 }
 
+
 .directions {
   overflow-y: scroll;
   max-height: 250px;
+}
+
+body {
+  background-image: url("./images/road1.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }

@@ -93,12 +93,12 @@ const Wrapper = styled.div`
                     directionsReady: true
                 })
             }, 1)
-            console.log(this.state.directionsReady)
+        // routingControl.on('routesfound', function(e) {
             // let routes = e.routes;
             // let summary = routes[0].summary;
             // // alert distance and time in km and hours(rounded)
             // alert('Total distance is ' + summary.totalDistance / 1000 + ' km and total time is ' + Math.round(summary.totalTime / 3600) + ' hours');
-         }).hide();
+        //  }).hide();
     }
 
     removeRoute = () => {
@@ -153,6 +153,10 @@ const Wrapper = styled.div`
                     <AsideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips} directionsReady={this.state.directionsReady}/> 
                 </div>
                 <Wrapper width="600px" height="200px" id="map" />
+                {/* <div className="trip-details">
+                    <Destinations tripSubmit={this.tripSubmit} />
+                    <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
+                </div> */}
             </div>    
         )
     }
