@@ -93,6 +93,7 @@ const Wrapper = styled.div`
                     directionsReady: true
                 })
             }, 1)
+        })
         // routingControl.on('routesfound', function(e) {
             // let routes = e.routes;
             // let summary = routes[0].summary;
