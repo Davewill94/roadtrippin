@@ -10,7 +10,7 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 import Destinations from './Destinations';
-import AssideLeft from './AssideLeft';
+import AsideLeft from './AssideLeft';
 
 
 const Wrapper = styled.div`
@@ -145,7 +145,7 @@ const Wrapper = styled.div`
             <div className="main-new-trip">
                 <div className="trip-details">
                     <Destinations tripSubmit={this.tripSubmit} />
-                    <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
+                    <AsideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
                 </div>
 
                 <Wrapper width="600px" height="200px" id="map" />
