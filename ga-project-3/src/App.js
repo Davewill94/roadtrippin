@@ -18,10 +18,10 @@ function App() {
       <Header />
 
       {/* <MapShow /> */}
-      <TripMap />
+      {/* <TripMap /> */}
 
       <Route exact path="/" >
-          <MapShow />
+        <TripMap />
       </Route>
       <Route path="/about">
         <About/> 

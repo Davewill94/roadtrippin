@@ -24,7 +24,9 @@ class AsideLeft extends Component {
     // }
     
     render () {
-        // console.log(this.state.instructions)
+        console.log(this.state.instructions);
+        
+
         return (
             <div>
                 <p>p</p>
