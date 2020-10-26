@@ -142,10 +142,13 @@ const Wrapper = styled.div`
     render() {
 
         return (
-            <div>
+            <div className="main-new-trip">
+                <div className="trip-details">
+                    <Destinations tripSubmit={this.tripSubmit} />
+                    <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
+                </div>
+
                 <Wrapper width="600px" height="200px" id="map" />
-                <Destinations tripSubmit={this.tripSubmit} />
-                <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
             </div>    
         )
     }
