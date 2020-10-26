@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ContactItem from './ContactItem';
 
 const WrapperDiv = styled.div`
 display: flex;
@@ -8,11 +9,7 @@ height: 75vh;
 justify-content: space-between;
 margin-top: 40px;
 `
-const itemDiv = styled.div`
-border: 3px solid black;
-color: brown;
 
-`
 
 const contactInfo = [
     {
@@ -37,11 +34,9 @@ export default function Contacts() {
     return (
         <WrapperDiv>
             {contactInfo.map((item, id) => {
-                return <itemDiv key={id}>
-                    <h1>{item.name}</h1>
-                    <h3>Email: {item.email}</h3>
-                    <h3>Favorite Food: {item.favoriteFood}</h3>
-                </itemDiv>
+                return <div key={id}>
+                    <ContactItem item={item}/>
+                </div>
             })}
         </WrapperDiv>
     )
