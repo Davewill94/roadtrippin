@@ -7,7 +7,8 @@ class Destinations extends Component {
         super(props)
         this.state = {
             from: '',
-            to: ''
+            to: '',
+            name: ''
         }
     }
     handleChange = (e) => {
@@ -20,6 +21,8 @@ class Destinations extends Component {
         return(
             <aside>
                 <form onSubmit={(e)=> this.props.tripSubmit(e, this.state)}>
+                    <label for='name' >Name Your Trip:</label>
+                    <input type="text" name='name' placeholder="Trip Name" onChange={this.handleChange}/>
                     <label for='start' >Enter Starting City:</label>
                     <input type="text" name='from' placeholder="City,State" onChange={this.handleChange}/>
                     <label for="destination">Enter Destination City:</label>

@@ -24,10 +24,26 @@ class AsideLeft extends Component {
     // }
     
     render () {
-        // console.log(this.state.instructions)
+        console.log(this.state.instructions);
+        
+
         return (
             <div>
-                <p>p</p>
+                <div className="previous-trips">
+                    {this.props.previousTrips.map((trip, id) => {
+                        return (
+                            <div>
+                                <h3>{trip.name}</h3>
+                                <p>From: {trip.from}</p>
+                                <p>To: {trip.to}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className="trip-directions" >
+                    <p>p</p>
+                </div>
+                
             </div>
         )
     }
