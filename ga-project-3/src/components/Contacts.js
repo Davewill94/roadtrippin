@@ -23,8 +23,8 @@ const contactInfo = [
         favoriteFood: "Pizza"
     },
     {
-        name: 'Micheal Manning',
-        email: 'ManningMicheal@JohnDeere.com',
+        name: 'Michael Manning',
+        email: 'ManningMichael@JohnDeere.com',
         favoriteFood: "Chocolate"
     }
 ]

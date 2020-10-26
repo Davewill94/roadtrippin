@@ -44,3 +44,27 @@ a:hover {
   border-radius: 10px;
   border: 2px solid rgb(57, 57, 57);
 }
+#homemap {
+  width: 600px;
+  background: rgb(77, 133, 129);
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid rgb(57, 57, 57);
+}
+
+#homepage a {
+  background: gray;
+}
+
+#homepage a:hover {
+  background-color: rgb(0, 167, 205);
+}
+
+#homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
