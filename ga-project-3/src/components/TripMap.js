@@ -29,12 +29,31 @@ const Wrapper = styled.div`
                   {lat: 41.878113, lng: -87.629799}
             ],
             routingControl: null,
-            center: [42,-90]
+            center: [42,-90],
+            previousTrips: [
+                {
+                    name: "Super Awsome Trip 2019",
+                    from: "Seatle, WA",
+                    to: "Miami, FL"
+                },
+                {
+                    name: "Classic Route 66",
+                    from: "Chicago, IL",
+                    to: "Santa Monica, CA"
+                }
+            ]
           }
       }
     
     tripSubmit = (e, locations) => {
         e.preventDefault();
+        console.log(locations)
+        let previousTrips = this.state.previousTrips
+        previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
+        this.setState({
+            previousTrips
+        })
+        console.log(previousTrips)
         this.getLatLng(locations)
     }
 // Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft
@@ -126,11 +145,7 @@ const Wrapper = styled.div`
             <div>
                 <Wrapper width="600px" height="200px" id="map" />
                 <Destinations tripSubmit={this.tripSubmit} />
-                {this.state != null ? 
-                    <AssideLeft routeInfo={this.state.routingControl} />
-                :
-                    <AssideLeft routeInfo={this.state.routingControl} />
-                }
+                <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
             </div>    
         )
     }
