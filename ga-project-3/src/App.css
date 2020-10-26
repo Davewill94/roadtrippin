@@ -6,7 +6,7 @@
 }
 
 #header {
-  background: rgb(85, 85, 85);
+  background: rgb(63, 63, 63);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -14,10 +14,10 @@
   width: 100%;
 }
 
-a {
+nav a {
   text-decoration: none;
   color: white;
-  border: 2px solid rgb(57, 57, 57);
+  border: 2px solid rgb(130, 130, 130);
   padding: 6px;
   border-radius: 4px;
   margin: 10px;
@@ -31,7 +31,7 @@ nav {
   width: 30vw;
 }
 
-a:hover {
+nav a:hover {
   background-color: rgb(0, 167, 205);
 }
 
@@ -52,19 +52,64 @@ a:hover {
   border: 2px solid rgb(57, 57, 57);
 }
 
+#aboutmap {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  height: 100%
+}
+
 #homepage a {
-  background: gray;
+  background: rgb(94, 94, 94);
+  font-size: 22px;
+  padding: 6px 18px;
+  font-weight: bold;
+  border-radius: 6px;
 }
 
 #homepage a:hover {
-  background-color: rgb(0, 167, 205);
+  background-color: rgb(249, 220, 0);
+  color: rgb(62, 62, 62);
 }
+
 
 #homepage {
   display: flex;
-  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  flex-direction: column;
+}
+#start {
+  width: 100px;
+  margin: -120px 0 0 -80px;
 }
 
+nav .active {
+  background: rgb(0, 167, 205);
+}
+
+#links {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid rgb(85, 20, 215);
+  background: rgba(139, 174, 196, 0.845);
+  height: 40vh;
+  padding: 20px;
+  width: 30vw;
+  height: 60vh;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 25px;
+  margin-top: 100px;
+}
+
+body {
+  background-image: url("./images/road1.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
