@@ -21,7 +21,7 @@ function App() {
       {/* <TripMap /> */}
 
       <Route exact path="/" >
-        <TripMap />
+          <TripMap />
       </Route>
       <Route path="/about">
         <About/> 
