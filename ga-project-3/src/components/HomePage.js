@@ -5,16 +5,11 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
     return (
         <div id="homepage">
-            <div>
+            <div id="start">
                 <nav>
-                    <p>Plan your next trip now!</p>
-                    <Link to="/newTrip">New Trip</Link>
+                    <Link to="/newTrip">Start a Trip</Link>
                 </nav>
             </div>
-            <div>
-                <img id="homemap" src="/HomePage.png" />
-            </div>
-
         </div>
     )
 }
