@@ -24,6 +24,7 @@ function App() {
       {/* <TripMap /> */}
 
       <Route path="/newTrip" >
+          <SpotifyApp />
           <TripMap />
       </Route>
 
