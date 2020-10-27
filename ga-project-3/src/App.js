@@ -10,15 +10,18 @@ import TripMap from './components/TripMap';
 import { Route } from 'react-router-dom';
 import About from './components/About';
 import Contacts from './components/Contacts'
+import SpotifyApp from './components/Spotify/SpotifyApp';
 
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <SpotifyApp />
+      
 
       {/* <MapShow /> */}
-      <TripMap />
+      {/* <TripMap /> */}
 
       <Route exact path="/" >
           <MapShow />
