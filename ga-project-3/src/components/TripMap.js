@@ -47,25 +47,54 @@ const Wrapper = styled.div`
           }
       }
     
-    tripSubmit = (e, locations) => {
+    getLocation = (locations) => {
+        let options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          };
+          
+        async function success(pos) {
+            let cord = pos.coords;
+            const resp = await axios.get(
+                `http://www.mapquestapi.com/geocoding/v1/reverse?key=Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft&location=${cord.latitude},${cord.longitude}`
+            )
+            let location = `${resp.data.results[0].locations[0].adminArea5},${resp.data.results[0].locations[0].adminArea3}`
+            locations.from = location;
+          }
+          
+          function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+          }
+          
+          navigator.geolocation.getCurrentPosition(success, error, options);
+          console.log("returning Locations")
+          console.log(locations);
+          return locations
+    }
+    
+    tripSubmit = async (e, locations) => {
         e.preventDefault();
-        let geo = navigator.geolocation;
-        console.log(geo)
-            let check = this.state.previousTrips.filter(trip => (
-                trip.name === locations.name
-            ))    
-            if(check.length > 0) {
-                this.setState({
-                    directionsReady: false
-                })
-            } else {
-                let previousTrips = this.state.previousTrips
-                previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
-                this.setState({
-                    previousTrips: previousTrips,
-                    directionsReady: false
-                })
-            }
+        if(locations.from==='') {
+            await this.getLocation(locations);
+        }
+        console.log(locations);
+        let check = this.state.previousTrips.filter(trip => (
+            trip.name === locations.name
+        ))    
+        if(check.length > 0) {
+            this.setState({
+                directionsReady: false
+            })
+        } else {
+            let previousTrips = this.state.previousTrips
+            previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
+            this.setState({
+                previousTrips: previousTrips,
+                directionsReady: false
+            })
+        }
+        console.log("Calling getLatLng")
         this.getLatLng(locations)
     }
 // Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft
