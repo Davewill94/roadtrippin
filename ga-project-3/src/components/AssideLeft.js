@@ -20,7 +20,7 @@ function AsideLeft (props) {
                 <div className="previous-trips">
                     {props.previousTrips.map((trip, id) => {
                         return (
-                            <div className="old-trip" key={id}>
+                            <div className="old-trip" key={id} onClick={(e) => {props.tripSubmit(e, trip)}}>
                                 <h3>{trip.name}</h3>
                                 <p>From: {trip.from}</p>
                                 <p>To: {trip.to}</p>
