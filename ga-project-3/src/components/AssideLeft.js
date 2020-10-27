@@ -1,7 +1,5 @@
-import React, {Component} from 'react';
-import L, { routing } from 'leaflet';
+import React from 'react';
 import 'leaflet/dist/leaflet.css';
-import styled from 'styled-components';
 
 import 'leaflet-routing-machine';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.js';

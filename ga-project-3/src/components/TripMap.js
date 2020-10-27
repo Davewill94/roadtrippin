@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import L, { routing } from 'leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -12,6 +12,7 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import Destinations from './Destinations';
 import AsideLeft from './AssideLeft';
 import Directions from './Directions';
+import TripOverView from './TripOverView';
 
 
 const Wrapper = styled.div`
@@ -43,11 +44,13 @@ const Wrapper = styled.div`
                     to: "Santa Monica, CA"
                 }
             ],
-            directionsReady: false
+            directionsReady: false,
+            tripDetails: []
           }
       }
     
     getLocation = (locations) => {
+        //not working yet put required field on text input
         let options = {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -94,7 +97,6 @@ const Wrapper = styled.div`
                 directionsReady: false
             })
         }
-        console.log("Calling getLatLng")
         this.getLatLng(locations)
     }
 // Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft
@@ -127,8 +129,12 @@ const Wrapper = styled.div`
 
         //the .hide() hides the instructions -> to view instructions remove the .hide()
         routingControl.on('routesfound', (e) => {
+            let tripDetails = [];
+            let summary = e.routes[0].summary;
+            tripDetails.push(summary)
             this.setState({
-                routingControl
+                routingControl,
+                tripDetails
             })
             setTimeout(() => {
                 this.setState({
@@ -136,12 +142,6 @@ const Wrapper = styled.div`
                 })
             }, 1)
         }).hide();
-        // routingControl.on('routesfound', function(e) {
-            // let routes = e.routes;
-            // let summary = routes[0].summary;
-            // // alert distance and time in km and hours(rounded)
-            // alert('Total distance is ' + summary.totalDistance / 1000 + ' km and total time is ' + Math.round(summary.totalTime / 3600) + ' hours');
-        //  }).hide();
     }
 
     removeRoute = () => {
@@ -191,6 +191,7 @@ const Wrapper = styled.div`
 
         return (
             <div className="main-new-trip">
+                <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady}/>
                 <div className="trip-details">
                     <div className="dest-direct">
                         <Destinations tripSubmit={this.tripSubmit} />
@@ -199,10 +200,6 @@ const Wrapper = styled.div`
                     <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                 </div>
                 <Wrapper width="600px" height="200px" id="map" />
-                {/* <div className="trip-details">
-                    <Destinations tripSubmit={this.tripSubmit} />
-                    <AssideLeft routeInfo={this.state.routingControl} previousTrips={this.state.previousTrips}/>
-                </div> */}
             </div>    
         )
     }
