@@ -52,7 +52,8 @@ const Wrapper = styled.div`
         let previousTrips = this.state.previousTrips
         previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
         this.setState({
-            previousTrips
+            previousTrips: previousTrips,
+            directionsReady: false
         })
         this.getLatLng(locations)
     }
@@ -151,9 +152,11 @@ const Wrapper = styled.div`
         return (
             <div className="main-new-trip">
                 <div className="trip-details">
-                    <Destinations tripSubmit={this.tripSubmit} />
+                    <div className="dest-direct">
+                        <Destinations tripSubmit={this.tripSubmit} />
+                        <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
+                    </div>
                     <AsideLeft previousTrips={this.state.previousTrips} />
-                    <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
                 </div>
                 <Wrapper width="600px" height="200px" id="map" />
                 {/* <div className="trip-details">
