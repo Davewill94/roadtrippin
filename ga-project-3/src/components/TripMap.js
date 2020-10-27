@@ -49,6 +49,8 @@ const Wrapper = styled.div`
     
     tripSubmit = (e, locations) => {
         e.preventDefault();
+        let geo = navigator.geolocation;
+        console.log(geo)
             let check = this.state.previousTrips.filter(trip => (
                 trip.name === locations.name
             ))    
