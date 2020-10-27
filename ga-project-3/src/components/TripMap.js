@@ -49,12 +49,21 @@ const Wrapper = styled.div`
     
     tripSubmit = (e, locations) => {
         e.preventDefault();
-        let previousTrips = this.state.previousTrips
-        previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
-        this.setState({
-            previousTrips: previousTrips,
-            directionsReady: false
-        })
+            let check = this.state.previousTrips.filter(trip => (
+                trip.name === locations.name
+            ))    
+            if(check.length > 0) {
+                this.setState({
+                    directionsReady: false
+                })
+            } else {
+                let previousTrips = this.state.previousTrips
+                previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
+                this.setState({
+                    previousTrips: previousTrips,
+                    directionsReady: false
+                })
+            }
         this.getLatLng(locations)
     }
 // Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft
@@ -86,7 +95,7 @@ const Wrapper = styled.div`
         }).addTo(this.map);
 
         //the .hide() hides the instructions -> to view instructions remove the .hide()
-        routingControl.on('routesfound', (e) =>{
+        routingControl.on('routesfound', (e) => {
             this.setState({
                 routingControl
             })
@@ -95,7 +104,7 @@ const Wrapper = styled.div`
                     directionsReady: true
                 })
             }, 1)
-        })
+        }).hide();
         // routingControl.on('routesfound', function(e) {
             // let routes = e.routes;
             // let summary = routes[0].summary;
@@ -156,7 +165,7 @@ const Wrapper = styled.div`
                         <Destinations tripSubmit={this.tripSubmit} />
                         <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
                     </div>
-                    <AsideLeft previousTrips={this.state.previousTrips} />
+                    <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                 </div>
                 <Wrapper width="600px" height="200px" id="map" />
                 {/* <div className="trip-details">
