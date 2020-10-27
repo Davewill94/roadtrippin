@@ -52,7 +52,8 @@ const Wrapper = styled.div`
         let previousTrips = this.state.previousTrips
         previousTrips.push({name: locations.name, from: locations.from, to: locations.to})
         this.setState({
-            previousTrips
+            previousTrips: previousTrips,
+            directionsReady: false
         })
         this.getLatLng(locations)
     }
