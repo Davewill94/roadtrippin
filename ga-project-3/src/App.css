@@ -141,7 +141,7 @@ nav .active {
 aside {
   display: flex;
   flex-direction: row;
-  width: 54%;
+  width: 100%;
   margin: 0px
 }
 form {
@@ -151,7 +151,7 @@ form {
 }
 
 .trips {
-  width: 44%;
+  width: 48%;
   margin: 0px;
 }
 
@@ -170,6 +170,7 @@ form {
 .directions {
   overflow-y: scroll;
   max-height: 50%;
+  margin-top: 5px;
 }
 
 body {
@@ -180,4 +181,12 @@ body {
   background-size: cover;
 }
 
+.dest-direct {
+  display: flex;
+  flex-flow: column;
+  width: 51%;
+}
 
+.leaflet-routing-alt p {
+  margin: 0;
+}

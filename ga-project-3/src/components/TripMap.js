@@ -151,9 +151,11 @@ const Wrapper = styled.div`
         return (
             <div className="main-new-trip">
                 <div className="trip-details">
-                    <Destinations tripSubmit={this.tripSubmit} />
+                    <div className="dest-direct">
+                        <Destinations tripSubmit={this.tripSubmit} />
+                        <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
+                    </div>
                     <AsideLeft previousTrips={this.state.previousTrips} />
-                    <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
                 </div>
                 <Wrapper width="600px" height="200px" id="map" />
                 {/* <div className="trip-details">
