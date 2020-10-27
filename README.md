@@ -24,6 +24,7 @@ Spotify API: https://developer.spotify.com/documentation/web-api/
   
   
 ## Wireframe
+![Wireframe](https://imgur.com/3pkb8FF.png)
 
 
 Github Repo: https://github.com/mogulermike/roadtrippin

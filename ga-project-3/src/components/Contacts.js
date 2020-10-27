@@ -4,7 +4,7 @@ import ContactItem from './ContactItem';
 
 const WrapperDiv = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 height: 75vh;
 justify-content: space-between;
 margin-top: 40px;
@@ -15,17 +15,27 @@ const contactInfo = [
     {
         name: 'Jon Vaflor',
         email: 'VaflorJonathan@JohnDeere.com',
-        favoriteFood: "Mint Chocolate Ice Cream"
+        states: "50",
+        picture: "./images/jon.png", 
+        carimg: "./images/joncar.png",
+        car: "Tesla Model 3 | 450hp | 116mpge" 
     },
     {
         name: 'David Williams',
         email: 'WilliamsDavid@JohnDeere.com',
-        favoriteFood: "Pizza"
+        states: "25",
+        picture: "./images/david.png", 
+        carimg: "./images/davidcar.jpg",
+        car: "Porsche 911 GT3 | 280hp | 20mpg" 
     },
     {
-        name: 'Micheal Manning',
-        email: 'ManningMicheal@JohnDeere.com',
-        favoriteFood: "Chocolate"
+        name: 'Michael Manning',
+        email: 'ManningMichael@JohnDeere.com',
+        states: "32",
+        picture: "./images/manning2.png", 
+        carimg: "./images/manningcar.png",
+        car: "Porsche 911 GT3 | 500hp | 15mpg" 
+
     }
 ]
 

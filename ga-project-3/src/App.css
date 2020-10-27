@@ -6,7 +6,7 @@
 }
 
 #header {
-  background: rgb(85, 85, 85);
+  background: rgb(63, 63, 63);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -14,12 +14,14 @@
   width: 100%;
 }
 
-a {
+nav a {
   text-decoration: none;
   color: white;
-  border: 2px solid rgb(57, 57, 57);
+  border: 2px solid rgb(130, 130, 130);
   padding: 6px;
   border-radius: 4px;
+  margin: 10px;
+  white-space: nowrap;
 }
 
 nav {
@@ -29,16 +31,210 @@ nav {
   width: 30vw;
 }
 
-a:hover {
-  background-color: rgb(0, 167, 205);
+nav a:hover {
+  background-color: rgb(249, 220, 0);
+  color: rgb(45, 45, 45);
+  border: 2px solid rgb(28, 28, 28);
 }
 
 #map {
-  width: 700px;
-  height: 600px;
+  /* width: 700px;
+  height: 600px; */
+  min-width: 100%;
+  height: 60vh;
   background: rgb(77, 133, 129);
   margin-top: 50px;
   text-align: center;
   border-radius: 10px;
   border: 2px solid rgb(57, 57, 57);
+  margin: 0;
 }
+#homemap {
+  width: 600px;
+  background: rgb(77, 133, 129);
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid rgb(57, 57, 57);
+}
+
+#aboutmap {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  height: 100%
+}
+
+#homepage a {
+  background: rgb(94, 94, 94);
+  font-size: 22px;
+  padding: 6px 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 1px solid yellow;
+}
+
+#homepage a:hover {
+  background-color: rgb(249, 220, 0);
+  color: rgb(45, 45, 45);
+  border: 2px solid rgb(28, 28, 28);
+}
+
+
+#homepage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#start {
+  width: 100px;
+  margin: -100px 0 0 -80px;
+}
+
+nav .active {
+  background-color: rgb(242, 214, 0);
+  color: rgb(45, 45, 45);
+  border: 2px solid rgb(28, 28, 28);
+}
+
+#links {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(60, 60, 60);
+  background: rgba(237, 248, 255, 0.687);
+  height: 40vh;
+  padding: 20px;
+  width: 30vw;
+  height: 60vh;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 25px;
+  margin-top: 100px;
+}
+
+
+.main-new-trip {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  justify-content: center;
+  /* align-content: space-between; */
+}
+.trip-details {
+  display: flex;
+  justify-content: space-between;
+  width: 40vw;
+  max-height: 30vh;
+  box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:linear-gradient(to bottom, #919b98 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:5px;
+	border:1px solid #566963;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:5px 5px 0px 5px;
+	text-decoration:none;
+  text-shadow:0px -1px 0px #2b665e;
+  margin: 10px 0px;
+
+}
+aside {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0px
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.trips {
+  width: 48%;
+  margin: 0px 0px 2px 0px;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+.old-trip {
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color:#eae0c2;
+	border-radius:10px;
+	border:2px solid #333029;
+	cursor:pointer;
+	color:#505739;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+  margin: 5px;
+  max-height: 100%;
+}
+.old-trip h3,
+.old-trip p {
+  margin: 2px 0px;
+  padding-left: 5px;
+}
+
+.directions {
+  overflow-y: scroll;
+  max-height: 50%;
+  margin-top: 5px;
+}
+
+body {
+  background-image: url("./images/road1.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.dest-direct {
+  display: flex;
+  flex-flow: column;
+  width: 51%;
+}
+
+.leaflet-routing-alt p {
+  margin: 0;
+}
+
+#profileImg {
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+#carImg {
+  height: 200px;
+  border-radius: 10px;
+}
+
+#carDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+
+#contactWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+span {
+font-weight: normal;
+}
+
