@@ -75,15 +75,15 @@ export default function SpotifyApp() {
   
 
     return (
-        <form>
-            <div>
+        <div className="music-player">
+            <div className="playlist-select">
                 <DropDown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={genreChanged} />
                 <DropDown options={playlist.listOfPlaylistFromAPI} selectedValue={playlist.selectedPlaylist} changed={playlistChanged}/>
             </div>
             {playlist.selectedPlaylist ? <iframe src={'https://open.spotify.com/embed/playlist/' + playlist.selectedPlaylist}
             allowtransparency="true" 
             allow="encrypted-media"></iframe> : null}
-        </form>
+        </div>
 
     )
 }

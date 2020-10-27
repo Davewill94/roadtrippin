@@ -13,6 +13,8 @@ import Destinations from './Destinations';
 import AsideLeft from './AssideLeft';
 import Directions from './Directions';
 import TripOverView from './TripOverView';
+import SpotifyApp from './Spotify/SpotifyApp';
+
 
 
 const Wrapper = styled.div`
@@ -191,14 +193,18 @@ const Wrapper = styled.div`
 
         return (
             <div className="main-new-trip">
-                <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady}/>
-                <div className="trip-details">
-                    <div className="dest-direct">
-                        <Destinations tripSubmit={this.tripSubmit} />
-                        <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
+                <div className="top-content" >
+                    <div className="trip-details">
+                        <div className="dest-direct">
+                            <Destinations tripSubmit={this.tripSubmit} />
+                            <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
+                        </div>
+                        <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                     </div>
-                    <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
+                    <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady}/>
+                    <SpotifyApp />
                 </div>
+
                 <Wrapper width="600px" height="200px" id="map" />
             </div>    
         )
