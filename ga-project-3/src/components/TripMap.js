@@ -16,7 +16,7 @@ import TripOverView from './TripOverView';
 import SpotifyApp from './Spotify/SpotifyApp';
 
 
-
+//styled component for 
 const Wrapper = styled.div`
   width: ${props => props.width};
   height: ${props => props.height};
@@ -80,8 +80,6 @@ const Wrapper = styled.div`
           }
           
           navigator.geolocation.getCurrentPosition(success, error, options);
-          console.log("returning Locations")
-          console.log(locations);
           return locations
     }
     
@@ -120,7 +118,7 @@ const Wrapper = styled.div`
             waypoints
         });
 
-        this.map.remove();
+        await this.map.remove();
         this.adjustMap();
         this.genRoute();
     }
@@ -239,12 +237,14 @@ const Wrapper = styled.div`
             maxNativeZoom: 17,
         }).addTo(this.map);
     }
+    //once trip data is displayed and a playlist is selected this should update total time
     updatePlaylistTime = (time) => {
         this.setState({
             playlisttime: time
         })
     }
 
+    //generate an empty map when page loads
     componentDidMount() {
         this.genMap();
     }
@@ -262,7 +262,7 @@ const Wrapper = styled.div`
                         <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                     </div>
                     <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady} startTrip={this.startTrip} playlisttime={this.state.playlisttime}/>
-                    <SpotifyApp nightMode={this.nightMode} currentMap={this.state.currentMap} updatePlaylistTime={this.updatePlaylistTime}/>
+                    <SpotifyApp nightMode={this.nightMode} currentMap={this.state.currentMap} updatePlaylistTime={this.updatePlaylistTime} directionsReady={this.state.directionsReady}/>
                 </div>
 
                 <Wrapper width="600px" height="200px" id="map" />
