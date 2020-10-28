@@ -80,8 +80,8 @@ export default function SpotifyApp(props) {
             <div className="playlist-select">
                 <DropDown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={genreChanged} />
                 <DropDown options={playlist.listOfPlaylistFromAPI} selectedValue={playlist.selectedPlaylist} changed={playlistChanged}/>
-                <input type="checkbox"  name="checkbox" onClick={props.nightMode}/>
-                <label for="checkbox"> Night Mode</label>
+                <input type="checkbox"  name="checkbox" onClick={() => props.nightMode()}/>
+                <label for="checkbox">Night Mode</label>
             </div>
             {playlist.selectedPlaylist ? <iframe src={'https://open.spotify.com/embed/playlist/' + playlist.selectedPlaylist}
             allowtransparency="true" 

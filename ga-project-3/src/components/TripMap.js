@@ -89,7 +89,7 @@ const Wrapper = styled.div`
         if(locations.from==='') {
             await this.getLocation(locations);
         }
-        // console.log(locations);
+        //check to see if current trip name existis
         let check = this.state.previousTrips.filter(trip => (
             trip.name === locations.name
         ))    
@@ -178,6 +178,7 @@ const Wrapper = styled.div`
 
     //generates map that centers around
     genMap = () => {
+        console.log(this.state.currentMap)
         this.map = L.map('map', {
             center: this.state.center, 
             zoom: 6,
@@ -198,14 +199,12 @@ const Wrapper = styled.div`
         });
     }
 
-    nightMode = () => {
-        console.log("clicked")
-
-        if(this.state.currentMap==0) {
+    nightMode = async () => {
+        if(this.state.currentMap===0) {
             this.setState({
                 currentMap: 1
             })
-        } else if(this.state.currentMap==1) {
+        } else if(this.state.currentMap===1) {
             this.setState({
                 currentMap: 0
             })
@@ -214,7 +213,7 @@ const Wrapper = styled.div`
                 currentMap: 0
             })
         }
-        this.map.remove();
+        await this.map.remove();
         this.genMap();
     }
 
@@ -235,7 +234,7 @@ const Wrapper = styled.div`
                         <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                     </div>
                     <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady} startTrip={this.startTrip}/>
-                    <SpotifyApp nightMode={this.nightMode}/>
+                    <SpotifyApp nightMode={this.nightMode} currentMap={this.state.currentMap}/>
                 </div>
 
                 <Wrapper width="600px" height="200px" id="map" />
