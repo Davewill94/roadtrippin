@@ -31,9 +31,11 @@ export default function SpotifyApp() {
                     headers: { 'Authorization': 'Bearer ' + tokenResponse.data.access_token }
                 })
                     .then(genreResponse => {
+                        let newArry = genreResponse.data.categories.items;
+                        newArry.unshift({name: 'Select Genre'})
                         setGenre({
                             selectedGenre: genres.selectedGenre,
-                            listOfGenresFromAPI: genreResponse.data.categories.items
+                            listOfGenresFromAPI: newArry
                         });
                     })
 
@@ -54,7 +56,6 @@ export default function SpotifyApp() {
             headers: { 'Authorization': 'Bearer ' + token }
         })
             .then(playlistResponse => {
-                console.log(playlistResponse.data.playlists.items)
                 let newArry = playlistResponse.data.playlists.items;
                 newArry.unshift({name: 'Select Playlist'})
                 setPlaylist({
