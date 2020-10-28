@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Route path="/home" >
+      <Route exact path={["/home","/"]} >
           <HomePage />
       </Route>
 
