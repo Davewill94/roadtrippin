@@ -22,7 +22,7 @@ class Destinations extends Component {
             <aside>
                 <form onSubmit={(e)=> this.props.tripSubmit(e, this.state)}>
                     <label for='name' >Name Your Trip:</label>
-                    <input type="text" name='name' placeholder="Trip Name" onChange={this.handleChange} required maxlength = "35"/>
+                    <input type="text" name='name' placeholder="Trip Name" onChange={this.handleChange} required maxLength = "35"/>
                     <label for='start' >Enter Starting City:</label>
                     <input type="text" name='from' placeholder="City,State" onChange={this.handleChange} required/>
                     <label for="destination">Enter Destination City:</label>

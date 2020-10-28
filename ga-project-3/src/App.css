@@ -241,6 +241,10 @@ input[type=submit] {
 .playlist-select > .buttons {
   text-align: center;
 }
+input[type=submit]:hover,
+.buttons:hover {
+  background:linear-gradient(to bottom, #a96807 5%, #ccc2a6 100%);
+}
 
 .directions {
   overflow-y: scroll;

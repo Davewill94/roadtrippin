@@ -53,7 +53,8 @@ const Wrapper = styled.div`
                 {type: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'},
                 {type: 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png'}
             ],
-            currentMap: 0
+            currentMap: 0,
+            playlisttime: 0
           }
       }
     
@@ -228,6 +229,11 @@ const Wrapper = styled.div`
         await this.map.remove();
         this.genMap();
     }
+    updatePlaylistTime = (time) => {
+        this.setState({
+            playlisttime: time
+        })
+    }
 
     componentDidMount() {
         this.genMap();
@@ -245,8 +251,8 @@ const Wrapper = styled.div`
                         </div>
                         <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                     </div>
-                    <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady} startTrip={this.startTrip}/>
-                    <SpotifyApp nightMode={this.nightMode} currentMap={this.state.currentMap}/>
+                    <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady} startTrip={this.startTrip} playlisttime={this.state.playlisttime}/>
+                    <SpotifyApp nightMode={this.nightMode} currentMap={this.state.currentMap} updatePlaylistTime={this.updatePlaylistTime}/>
                 </div>
 
                 <Wrapper width="600px" height="200px" id="map" />

@@ -68,6 +68,18 @@ export default function SpotifyApp(props) {
     }
 
     const playlistChanged = val => {
+        let time = 0;
+        Axios(`https://api.spotify.com/v1/playlists/${val}/tracks`, {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + token }
+        })
+            .then(playlistInfo => {
+                console.log(playlistInfo.data.items)
+                playlistInfo.data.items.map((song, id) => {
+                    time += parseInt(song.track.duration_ms)
+                })
+                props.updatePlaylistTime((time/(1000*3600)).toFixed(1));
+            })
         setPlaylist({
             selectedPlaylist: val,
             listOfPlaylistFromAPI: playlist.listOfPlaylistFromAPI
@@ -82,9 +94,16 @@ export default function SpotifyApp(props) {
                 <DropDown options={playlist.listOfPlaylistFromAPI} selectedValue={playlist.selectedPlaylist} changed={playlistChanged}/>
                 <p className="buttons" onClick={(selectedGenre) => props.nightMode(genres.selectedGenre)}>{props.currentMap>0?"Normal Mode":"Night Mode"}</p>
             </div>
-            {playlist.selectedPlaylist ? <iframe src={'https://open.spotify.com/embed/playlist/' + playlist.selectedPlaylist}
-            allowtransparency="true" 
-            allow="encrypted-media"></iframe> : null}
+            {
+                playlist.selectedPlaylist ? 
+                    <iframe 
+                        src={'https://open.spotify.com/embed/playlist/' + playlist.selectedPlaylist}
+                        allowtransparency="true" 
+                        allow="encrypted-media">
+                    </iframe> 
+                    : 
+                    null
+            }
         </div>
 
     )
