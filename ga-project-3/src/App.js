@@ -16,8 +16,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Route path="/home" >
-        <HomePage />
+    
+      <Route exact path={["/home","/"]} >
+          <HomePage />
       </Route>
 
       <Route path="/newTrip" >
