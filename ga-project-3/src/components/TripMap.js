@@ -80,13 +80,15 @@ const Wrapper = styled.div`
           
           navigator.geolocation.getCurrentPosition(success, error, options);
           return locations
+        //not currently functional
     }
     
     tripSubmit = async (e, locations) => {
         e.preventDefault();
-        if(locations.from==='') {
-            await this.getLocation(locations);
-        }
+        //ties to function that currently does not work
+        // if(locations.from==='') {
+        //     await this.getLocation(locations);
+        // }
         //check to see if current trip name existis
         let check = this.state.previousTrips.filter(trip => (
             trip.name === locations.name
@@ -228,7 +230,7 @@ const Wrapper = styled.div`
            }
        }
        //waits for update of state to new map layer then removes current map layer
-       await this.map.removeLayer(this.map._layers)
+       await this.map.removeLayer(this.map)
        //adds the new map layer back to map
        L.tileLayer(`${this.state.maptype[this.state.currentMap].type}`, {
             detectRetina: true,

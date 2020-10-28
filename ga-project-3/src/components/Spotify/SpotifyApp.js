@@ -104,13 +104,12 @@ export default function SpotifyApp(props) {
                 an on-change function is aslo passed in each dropdown.*/}
                 <DropDown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={genreChanged} />
                 <DropDown options={playlist.listOfPlaylistFromAPI} selectedValue={playlist.selectedPlaylist} changed={playlistChanged}/>
-                {props.directionsReady && 
-                    <p className="buttons" 
-                        onClick={(selectedGenre) => props.nightMode(genres.selectedGenre)}>
-                            {props.currentMap>0?
-                            "Normal Mode":"Night Mode"}
-                    </p>
-                }
+                <p className="buttons" 
+                    onClick={(selectedGenre) => props.nightMode(genres.selectedGenre)}>
+                    {props.currentMap>0?
+                    "Normal Mode":"Night Mode"
+                    }
+                </p>
             </div>
             {
                 playlist.selectedPlaylist ?

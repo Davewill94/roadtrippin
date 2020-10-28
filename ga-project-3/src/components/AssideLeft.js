@@ -7,12 +7,6 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 
 function AsideLeft (props) {
-  
-    //    if(props.directionsReady) {
-    //      console.log(props.routeInfo._selectedRoute.instructions);  
-    //    } 
-        
-
         return (
             <div className="trips">
                 <div className="previous-trips">
