@@ -199,20 +199,33 @@ const Wrapper = styled.div`
         });
     }
 
-    nightMode = async () => {
-        if(this.state.currentMap===0) {
-            this.setState({
-                currentMap: 1
-            })
-        } else if(this.state.currentMap===1) {
-            this.setState({
-                currentMap: 0
-            })
-        } else {
-            this.setState({
-                currentMap: 0
-            })
-        }
+    nightMode = async (selectedGenre) => {
+       if(selectedGenre!="metal") {
+            if(this.state.currentMap===0) {
+                this.setState({
+                    currentMap: 1
+                })
+            } else if(this.state.currentMap===1) {
+                this.setState({
+                    currentMap: 0
+                })
+            } else {
+                this.setState({
+                    currentMap: 0
+                })
+            }
+       } else {
+           if(this.state.currentMap===2) {
+                this.setState({
+                    currentMap: 0
+                })
+           } else {
+                this.setState({
+                    currentMap: 2
+                })
+           }
+       }
+
         await this.map.remove();
         this.genMap();
     }
