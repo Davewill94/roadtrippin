@@ -199,11 +199,13 @@ const Wrapper = styled.div`
     }
 
     nightMode = () => {
-        if(this.state.currentMap===0) {
+        console.log("clicked")
+
+        if(this.state.currentMap==0) {
             this.setState({
                 currentMap: 1
             })
-        } else if(this.state.currentMap===1) {
+        } else if(this.state.currentMap==1) {
             this.setState({
                 currentMap: 0
             })
@@ -212,6 +214,8 @@ const Wrapper = styled.div`
                 currentMap: 0
             })
         }
+        this.map.remove();
+        this.genMap();
     }
 
     componentDidMount() {
