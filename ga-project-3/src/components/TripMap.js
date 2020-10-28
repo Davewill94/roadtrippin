@@ -178,13 +178,12 @@ const Wrapper = styled.div`
 
     //generates map that centers around
     genMap = () => {
-        console.log(this.state.currentMap)
         this.map = L.map('map', {
             center: this.state.center, 
             zoom: 6,
             zoomControl: false
           });
-    
+          //add selected map skin to the map area and set the map area
           L.tileLayer(`${this.state.maptype[this.state.currentMap].type}`, {
             detectRetina: true,
             maxZoom: 17, 
@@ -200,7 +199,7 @@ const Wrapper = styled.div`
     }
 
     nightMode = async (selectedGenre) => {
-       if(selectedGenre!="metal") {
+       if(selectedGenre!=="metal") {
             if(this.state.currentMap===0) {
                 this.setState({
                     currentMap: 1

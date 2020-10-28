@@ -1,7 +1,6 @@
 import React from 'react';
 
 function TripOverView(props) {
-    console.log(props)
     return (
         <div >
             {props.directionsReady && 
