@@ -29,5 +29,10 @@ Spotify API: https://developer.spotify.com/documentation/web-api/
 
 Github Repo: https://github.com/mogulermike/roadtrippin
 
+Maps: https://leaflet-extras.github.io/leaflet-providers/preview/
+Spotify API: https://developer.spotify.com/documentation/web-api/
+Leaflet API: https://react-leaflet.js.org/?_sm_au_=iVVF1T4WqPf0JLJNL321jK0f1JH33
+
+
   
 

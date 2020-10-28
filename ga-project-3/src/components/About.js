@@ -25,13 +25,8 @@ color: black;
 p {
    line-height: 175%;
 }
-
 `
-const LinksDiv = styled.div`
-text-align: center;
 
-
-`
 
 export default function About() {
     return (
@@ -66,15 +61,6 @@ export default function About() {
                 <a href="https://roadtrippers.com/" target="_blank">roadtrippers.com</a>
             </p>
             </TextDiv>
-            <LinksDiv>
-            {/* <div id="links">
-                <p>Useful Links</p>
-                <a href="http://www.ultimatecampgrounds.com/index.php/products/full-map" target="_blank">ultimagecampgrounds.com</a><br></br>
-                <a href="https://www.fueleconomy.gov/trip/" target="_blank">fueleconomy.gov </a><br></br>
-                <a href="https://roadtrippers.com/" target="_blank">roadtrippers.com</a>
-
-            </div> */}
-            </LinksDiv>
         </WrapperDiv>
     )
 }
