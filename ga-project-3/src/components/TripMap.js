@@ -69,7 +69,7 @@ const Wrapper = styled.div`
         async function success(pos) {
             let cord = pos.coords;
             const resp = await axios.get(
-                `http://www.mapquestapi.com/geocoding/v1/reverse?key=Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft&location=${cord.latitude},${cord.longitude}`
+                `http://www.mapquestapi.com/geocoding/v1/reverse?key=${process.env.REACT_APP_MAP_KEY}&location=${cord.latitude},${cord.longitude}`
             )
             let location = `${resp.data.results[0].locations[0].adminArea5},${resp.data.results[0].locations[0].adminArea3}`
             locations.from = location;
@@ -108,12 +108,9 @@ const Wrapper = styled.div`
         }
         this.getLatLng(locations)
     }
-// Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft
-// http://www.mapquestapi.com/geocoding/v1/batch?key=Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft&location=Denver,CO&location=Boulder,CO
-
     getLatLng = async (locations) => {
         const resp = await axios.get(
-            `http://www.mapquestapi.com/geocoding/v1/batch?key=Dqwo8TsEVnyjgzGJZ8ae6Dl1dpm7W2Ft&location=${locations.from}&location=${locations.to}`
+            `http://www.mapquestapi.com/geocoding/v1/batch?key=${process.env.REACT_APP_MAP_KEY}&location=${locations.from}&location=${locations.to}`
         )
         let waypoints = [];
         waypoints.push(resp.data.results[0].locations[0].latLng);

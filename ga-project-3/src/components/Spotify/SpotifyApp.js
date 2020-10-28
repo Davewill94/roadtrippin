@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import DropDown from './DropDown';
 import Axios from 'axios';
 
-// require('dotenv').config();
 
 export default function SpotifyApp(props) {
 
