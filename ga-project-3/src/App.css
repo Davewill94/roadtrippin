@@ -146,7 +146,7 @@ nav .active {
   justify-content: space-around;
   align-items: center;
   width: 40vw;
-  height: calc(100% - 25px);
+  height: calc(100% - 30px);
   /* max-height: 30vh; */
   box-shadow:inset 0px 1px 3px 0px #91b8b3;
 	background:linear-gradient(to bottom, #919b98 5%, #6c7c7c 100%);
@@ -194,6 +194,12 @@ form {
   flex-direction: column;
   width: 100%;
 }
+::placeholder {
+  text-align: center;
+}
+input[type=text]:focus {
+  background-color: lightblue;
+}
 .playlist-select{
   display: flex;
   flex-direction: column;
@@ -206,7 +212,7 @@ form {
   overflow-y: scroll;
 }
 
-.old-trip {
+.buttons, input[type=submit] {
   box-shadow: 0px 1px 0px 0px #1c1b18;
 	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
 	background-color:#eae0c2;
@@ -222,8 +228,8 @@ form {
   margin: 5px;
   max-height: 100%;
 }
-.old-trip h3,
-.old-trip p {
+.buttons h3,
+.buttons p {
   margin: 2px 0px;
   padding-left: 5px;
 }

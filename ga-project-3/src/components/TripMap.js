@@ -83,7 +83,7 @@ const Wrapper = styled.div`
         if(locations.from==='') {
             await this.getLocation(locations);
         }
-        console.log(locations);
+        // console.log(locations);
         let check = this.state.previousTrips.filter(trip => (
             trip.name === locations.name
         ))    
@@ -184,6 +184,10 @@ const Wrapper = styled.div`
             maxNativeZoom: 17,
           }).addTo(this.map);
     }
+    //pans map to starting location and zooms to max
+    startTrip = () => {
+        this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 15)
+    }
 
     componentDidMount() {
         this.genMap();
@@ -201,7 +205,7 @@ const Wrapper = styled.div`
                         </div>
                         <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                     </div>
-                    <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady}/>
+                    <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady} startTrip={this.startTrip}/>
                     <SpotifyApp />
                 </div>
 
