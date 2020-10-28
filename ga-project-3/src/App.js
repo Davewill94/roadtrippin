@@ -8,7 +8,8 @@ import TripMap from './components/TripMap';
 
 import { Route } from 'react-router-dom';
 import About from './components/About';
-import Contacts from './components/Contacts'
+import Contacts from './components/Contacts';
+
 
 
 function App() {

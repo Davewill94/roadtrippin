@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import DropDown from './DropDown';
-import { Credentials } from './Credentials';
 import Axios from 'axios';
+
+// require('dotenv').config();
 
 export default function SpotifyApp(props) {
 
-    const spotify = Credentials();
 
 
 // Setting initial states and methods to change them
@@ -18,7 +18,7 @@ export default function SpotifyApp(props) {
         Axios('https://accounts.spotify.com/api/token', {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + btoa(spotify.ClientId + ':' + spotify.ClientSecret)
+                'Authorization': 'Basic ' + btoa(process.env.REACT_APP_CLIENT_ID + ':' + process.env.REACT_APP_CLIENT_SECRET)
             },
             data: 'grant_type=client_credentials',
             method: 'POST'
@@ -42,7 +42,7 @@ export default function SpotifyApp(props) {
 
             })
 
-    }, [genres.selectedGenre, spotify.ClientId, spotify.ClientSecret])
+    }, [genres.selectedGenre, process.env.REACT_APP_CLIENT_ID, process.env.REACT_APP_CLIENT_SECRET])
 
     const genreChanged = (val) => {
         setGenre({
