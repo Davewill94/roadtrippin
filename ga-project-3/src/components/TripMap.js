@@ -108,6 +108,7 @@ const Wrapper = styled.div`
         }
         this.getLatLng(locations)
     }
+    //function gets lat lng coordinates of entered cities
     getLatLng = async (locations) => {
         const resp = await axios.get(
             `http://www.mapquestapi.com/geocoding/v1/batch?key=${process.env.REACT_APP_MAP_KEY}&location=${locations.from}&location=${locations.to}`
@@ -123,7 +124,7 @@ const Wrapper = styled.div`
         this.adjustMap();
         this.genRoute();
     }
-    
+    //overal function removes existing routes and plots a new one
     genRoute = () => {
         this.removeRoute();
         let routingControl = L.Routing.control({
@@ -134,6 +135,7 @@ const Wrapper = styled.div`
         }).addTo(this.map);
 
         //the .hide() hides the instructions -> to view instructions remove the .hide()
+        //funciton uses leaflet-routing-macine to calculated an plot route between two points
         routingControl.on('routesfound', (e) => {
             let tripDetails = [];
             let summary = e.routes[0].summary;
@@ -142,6 +144,7 @@ const Wrapper = styled.div`
                 routingControl,
                 tripDetails
             })
+            //delay to set allow routingControl and tripdetails to update in state - place for future improvement 
             setTimeout(() => {
                 this.setState({
                     directionsReady: true
@@ -150,12 +153,14 @@ const Wrapper = styled.div`
         }).hide();
     }
 
+    //function removes an existing routing if one already exists on the map
     removeRoute = () => {
         if(this.state.routingControl != null ) {
             this.map.removeControl(this.state.routingControl)
         }
     }
 
+    //function re-centers map to be the mid point of the two waypoints seclected
     adjustMap = () => {
         let lats = 0;
         let lngs = 0;
@@ -167,14 +172,15 @@ const Wrapper = styled.div`
 
         center.push(lats/this.state.waypoints.length);
         center.push(lngs/this.state.waypoints.length);
-        
+    
         this.setState({
             center
         })
+        //once map is re-centered and route is generating call map gen
         this.genMap();
     }
 
-    //generates map that centers around
+    //generates map that centers around current center
     genMap = () => {
         this.map = L.map('map', {
             center: this.state.center, 
@@ -196,7 +202,9 @@ const Wrapper = styled.div`
         });
     }
 
+    //function handles night mode request from SpotifyAppy component
     nightMode = async (selectedGenre) => {
+        //metal night mode easter egg
        if(selectedGenre!=="metal") {
             if(this.state.currentMap===0) {
                 this.setState({
@@ -222,9 +230,14 @@ const Wrapper = styled.div`
                 })
            }
        }
-
-        await this.map.remove();
-        this.genMap();
+       //waits for update of state to new map layer then removes current map layer
+       await this.map.removeLayer(this.map._layers)
+       //adds the new map layer back to map
+       L.tileLayer(`${this.state.maptype[this.state.currentMap].type}`, {
+            detectRetina: true,
+            axZoom: 17, 
+            maxNativeZoom: 17,
+        }).addTo(this.map);
     }
     updatePlaylistTime = (time) => {
         this.setState({
