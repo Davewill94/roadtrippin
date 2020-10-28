@@ -16,25 +16,25 @@ const contactInfo = [
         name: 'Jon Vaflor',
         email: 'VaflorJonathan@JohnDeere.com',
         states: "50",
-        picture: "./images/jon.png", 
+        picture: "./images/jon.png",
         carimg: "./images/joncar.png",
-        car: "Tesla Model 3 | 450hp | 116mpge" 
+        car: "Tesla Model 3 | 450hp | 116mpge"
     },
     {
         name: 'David Williams',
         email: 'WilliamsDavid@JohnDeere.com',
         states: "25",
-        picture: "./images/david.png", 
+        picture: "./images/david.png",
         carimg: "./images/davidcar.jpg",
-        car: "Porsche 911 GT3 | 280hp | 20mpg" 
+        car: "Porsche 911 GT3 | 280hp | 20mpg"
     },
     {
         name: 'Michael Manning',
         email: 'ManningMichael@JohnDeere.com',
         states: "32",
-        picture: "./images/manning2.png", 
+        picture: "./images/manning2.png",
         carimg: "./images/manningcar.png",
-        car: "Porsche 911 GT3 | 500hp | 15mpg" 
+        car: "Porsche 911 GT3 | 500hp | 15mpg"
 
     }
 ]
@@ -45,7 +45,7 @@ export default function Contacts() {
         <WrapperDiv>
             {contactInfo.map((item, id) => {
                 return <div key={id}>
-                    <ContactItem item={item}/>
+                    <ContactItem item={item} />
                 </div>
             })}
         </WrapperDiv>

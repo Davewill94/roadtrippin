@@ -16,22 +16,22 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Route path="/home" >
+    
+      <Route exact path={["/home","/"]} >
           <HomePage />
       </Route>
 
       <Route path="/newTrip" >
-          {/* <SpotifyApp /> */}
-          <TripMap />
+        <TripMap />
       </Route>
 
       <Route path="/about">
-        <About/> 
-      </Route> 
+        <About />
+      </Route>
 
       <Route path="/contacts">
-        <Contacts/> 
-      </Route> 
+        <Contacts />
+      </Route>
 
     </div>
   );
