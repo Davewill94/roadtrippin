@@ -205,11 +205,10 @@ const Wrapper = styled.div`
             maxZoom: 17, 
             maxNativeZoom: 17,
           }).addTo(this.map);
-          L.marker([this.state.waypoints[0].lat, this.state.waypoints[0].lng]).addTo(this.map);
-          L.marker([this.state.waypoints[1].lat, this.state.waypoints[1].lng]).addTo(this.map);
-
-        //   let latlng = L.latLng(this.state.waypoints[0].lat, this.state.waypoints[0].lng)
-        //   L.marker(latlng).addTo(this.map);
+          if(this.state.routingControl!==null) {
+            L.marker([this.state.waypoints[0].lat, this.state.waypoints[0].lng]).addTo(this.map);
+            L.marker([this.state.waypoints[1].lat, this.state.waypoints[1].lng]).addTo(this.map);              
+          }
 
     }
     //pans map to starting location and zooms to max
