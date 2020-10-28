@@ -47,7 +47,13 @@ const Wrapper = styled.div`
                 }
             ],
             directionsReady: false,
-            tripDetails: []
+            tripDetails: [],
+            maptype: [
+                {type: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'},
+                {type: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'},
+                {type: 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png'}
+            ],
+            currentMap: 0
           }
       }
     
@@ -178,9 +184,9 @@ const Wrapper = styled.div`
             zoomControl: false
           });
     
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          L.tileLayer(`${this.state.maptype[this.state.currentMap].type}`, {
             detectRetina: true,
-            maxZoom: 15, 
+            maxZoom: 17, 
             maxNativeZoom: 17,
           }).addTo(this.map);
     }
@@ -188,8 +194,24 @@ const Wrapper = styled.div`
     startTrip = () => {
         this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
             animate: true,
-            duration: 5
+            duration: 8
         });
+    }
+
+    nightMode = () => {
+        if(this.state.currentMap===0) {
+            this.setState({
+                currentMap: 1
+            })
+        } else if(this.state.currentMap===1) {
+            this.setState({
+                currentMap: 0
+            })
+        } else {
+            this.setState({
+                currentMap: 0
+            })
+        }
     }
 
     componentDidMount() {
@@ -209,7 +231,7 @@ const Wrapper = styled.div`
                         <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                     </div>
                     <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady} startTrip={this.startTrip}/>
-                    <SpotifyApp />
+                    <SpotifyApp nightMode={this.nightMode}/>
                 </div>
 
                 <Wrapper width="600px" height="200px" id="map" />
