@@ -7,7 +7,6 @@ import axios from 'axios';
 import 'leaflet-routing-machine';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.js';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
-import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 import Destinations from './Destinations';
 import AsideLeft from './AssideLeft';
@@ -16,7 +15,7 @@ import TripOverView from './TripOverView';
 import SpotifyApp from './Spotify/SpotifyApp';
 
 
-//styled component for 
+//styled component for map wrapper
 const Wrapper = styled.div`
   width: ${props => props.width};
   height: ${props => props.height};
