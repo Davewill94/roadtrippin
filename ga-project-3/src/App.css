@@ -228,6 +228,10 @@ input[type=text]:focus {
   margin: 5px;
   max-height: 100%;
 }
+input[type=submit] {
+  width: 50%;
+  margin: 5px auto;
+}
 .buttons h3,
 .buttons p {
   margin: 2px 0px;
