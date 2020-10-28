@@ -21,9 +21,9 @@ import SpotifyApp from './Spotify/SpotifyApp';
 let DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow,
-    iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
+    iconAnchor: [12, 40], // adjusted icons anchor location to appear correctly on map
 });
-
+//set marks icon to be defalut icon, should correct error in icon load
 L.Marker.prototype.options.icon = DefaultIcon;
 
 
