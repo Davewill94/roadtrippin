@@ -13,6 +13,8 @@ import Destinations from './Destinations';
 import AsideLeft from './AssideLeft';
 import Directions from './Directions';
 import TripOverView from './TripOverView';
+import SpotifyApp from './Spotify/SpotifyApp';
+
 
 
 const Wrapper = styled.div`
@@ -45,7 +47,13 @@ const Wrapper = styled.div`
                 }
             ],
             directionsReady: false,
-            tripDetails: []
+            tripDetails: [],
+            maptype: [
+                {type: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'},
+                {type: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'},
+                {type: 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png'}
+            ],
+            currentMap: 0
           }
       }
     
@@ -81,7 +89,7 @@ const Wrapper = styled.div`
         if(locations.from==='') {
             await this.getLocation(locations);
         }
-        console.log(locations);
+        //check to see if current trip name existis
         let check = this.state.previousTrips.filter(trip => (
             trip.name === locations.name
         ))    
@@ -175,12 +183,50 @@ const Wrapper = styled.div`
             zoom: 6,
             zoomControl: false
           });
-    
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          //add selected map skin to the map area and set the map area
+          L.tileLayer(`${this.state.maptype[this.state.currentMap].type}`, {
             detectRetina: true,
-            maxZoom: 15, 
+            maxZoom: 17, 
             maxNativeZoom: 17,
           }).addTo(this.map);
+    }
+    //pans map to starting location and zooms to max
+    startTrip = () => {
+        this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
+            animate: true,
+            duration: 8
+        });
+    }
+
+    nightMode = async (selectedGenre) => {
+       if(selectedGenre!=="metal") {
+            if(this.state.currentMap===0) {
+                this.setState({
+                    currentMap: 1
+                })
+            } else if(this.state.currentMap===1) {
+                this.setState({
+                    currentMap: 0
+                })
+            } else {
+                this.setState({
+                    currentMap: 0
+                })
+            }
+       } else {
+           if(this.state.currentMap===2) {
+                this.setState({
+                    currentMap: 0
+                })
+           } else {
+                this.setState({
+                    currentMap: 2
+                })
+           }
+       }
+
+        await this.map.remove();
+        this.genMap();
     }
 
     componentDidMount() {
@@ -191,14 +237,18 @@ const Wrapper = styled.div`
 
         return (
             <div className="main-new-trip">
-                <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady}/>
-                <div className="trip-details">
-                    <div className="dest-direct">
-                        <Destinations tripSubmit={this.tripSubmit} />
-                        <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
+                <div className="top-content" >
+                    <div className="trip-details">
+                        <div className="dest-direct">
+                            <Destinations tripSubmit={this.tripSubmit} />
+                            <Directions routeInfo={this.state.routingControl} directionsReady={this.state.directionsReady}/>
+                        </div>
+                        <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
                     </div>
-                    <AsideLeft previousTrips={this.state.previousTrips} tripSubmit={this.tripSubmit} />
+                    <TripOverView overView = {this.state.tripDetails} directionsReady={this.state.directionsReady} startTrip={this.startTrip}/>
+                    <SpotifyApp nightMode={this.nightMode} currentMap={this.state.currentMap}/>
                 </div>
+
                 <Wrapper width="600px" height="200px" id="map" />
             </div>    
         )

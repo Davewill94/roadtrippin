@@ -19,10 +19,8 @@ function App() {
           <HomePage />
       </Route>
 
-      {/* <MapShow /> */}
-      {/* <TripMap /> */}
-
       <Route path="/newTrip" >
+          {/* <SpotifyApp /> */}
           <TripMap />
       </Route>
 
