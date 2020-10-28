@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -13,6 +17,14 @@ import AsideLeft from './AssideLeft';
 import Directions from './Directions';
 import TripOverView from './TripOverView';
 import SpotifyApp from './Spotify/SpotifyApp';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 
 //styled component for map wrapper
@@ -186,12 +198,19 @@ const Wrapper = styled.div`
             zoom: 6,
             zoomControl: false
           });
+        
           //add selected map skin to the map area and set the map area
           L.tileLayer(`${this.state.maptype[this.state.currentMap].type}`, {
             detectRetina: true,
             maxZoom: 17, 
             maxNativeZoom: 17,
           }).addTo(this.map);
+          L.marker([this.state.waypoints[0].lat, this.state.waypoints[0].lng]).addTo(this.map);
+          L.marker([this.state.waypoints[1].lat, this.state.waypoints[1].lng]).addTo(this.map);
+
+        //   let latlng = L.latLng(this.state.waypoints[0].lat, this.state.waypoints[0].lng)
+        //   L.marker(latlng).addTo(this.map);
+
     }
     //pans map to starting location and zooms to max
     startTrip = () => {
