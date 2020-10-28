@@ -3,7 +3,7 @@ import DropDown from './DropDown';
 import { Credentials } from './Credentials';
 import Axios from 'axios';
 
-export default function SpotifyApp() {
+export default function SpotifyApp(props) {
 
     const spotify = Credentials();
 
@@ -31,9 +31,11 @@ export default function SpotifyApp() {
                     headers: { 'Authorization': 'Bearer ' + tokenResponse.data.access_token }
                 })
                     .then(genreResponse => {
+                        let newArry = genreResponse.data.categories.items;
+                        newArry.unshift({name: 'Select Genre'})
                         setGenre({
                             selectedGenre: genres.selectedGenre,
-                            listOfGenresFromAPI: genreResponse.data.categories.items
+                            listOfGenresFromAPI: newArry
                         });
                     })
 
@@ -54,7 +56,6 @@ export default function SpotifyApp() {
             headers: { 'Authorization': 'Bearer ' + token }
         })
             .then(playlistResponse => {
-                console.log(playlistResponse.data.playlists.items)
                 let newArry = playlistResponse.data.playlists.items;
                 newArry.unshift({name: 'Select Playlist'})
                 setPlaylist({
@@ -75,15 +76,16 @@ export default function SpotifyApp() {
   
 
     return (
-        <form>
-            <div>
+        <div className="music-player">
+            <div className="playlist-select">
                 <DropDown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={genreChanged} />
                 <DropDown options={playlist.listOfPlaylistFromAPI} selectedValue={playlist.selectedPlaylist} changed={playlistChanged}/>
+                <p className="buttons" onClick={(selectedGenre) => props.nightMode(genres.selectedGenre)}>{props.currentMap>0?"Normal Mode":"Night Mode"}</p>
             </div>
             {playlist.selectedPlaylist ? <iframe src={'https://open.spotify.com/embed/playlist/' + playlist.selectedPlaylist}
             allowtransparency="true" 
             allow="encrypted-media"></iframe> : null}
-        </form>
+        </div>
 
     )
 }
