@@ -186,7 +186,10 @@ const Wrapper = styled.div`
     }
     //pans map to starting location and zooms to max
     startTrip = () => {
-        this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 15)
+        this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
+            animate: true,
+            duration: 5
+        });
     }
 
     componentDidMount() {
