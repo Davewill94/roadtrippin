@@ -284,7 +284,8 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 30px;
+  margin: 15px;
+
 }
 
 span {
@@ -430,7 +431,7 @@ iframe {
     align-items: center;
     flex-direction: column;
     max-width: 250px;
-    margin: 0;
+    margin-top: 30px;
   }
 
   a {
