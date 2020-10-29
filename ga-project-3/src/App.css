@@ -11,8 +11,9 @@
   align-items: center;
   justify-content: space-between;
   color: white;
-  width: 100%;
+  width: 100vw;
   height: 12vh;
+
 }
 
 nav a {
@@ -318,3 +319,106 @@ iframe {
   width: 100%;
 }
 
+@media only screen and (min-width: 320px) {
+  .main-new-trip {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 95vw;
+  }
+  .top-content  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .trip-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 30vh;
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #919b98 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:10px;
+    border:1px solid #566963;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:5px 5px 0px 5px;
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+    margin: 5px 0px;
+  
+  }
+  .music-player {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 30px);
+    /* max-height: 30vh; */
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #919b98 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:10px;
+    border:1px solid #566963;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:5px;
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+    margin: 5px 0px;
+  }
+  .trip-totals-wrapper {
+    width: 100%;
+    align-items: center;
+  }
+  .trip-totals {
+    text-align: center;
+    /* width: 100%; */
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #919b98 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:10px;
+    border:1px solid #566963;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:5px 5px 0px 5px;
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+    margin: 0px;
+  }
+  #map {
+    max-width: 100%;
+    height: 60vh;
+    background: rgb(77, 133, 129);
+    margin-top: 50px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(57, 57, 57);
+    margin: 0;
+  }
+  #header {
+    background: rgb(63, 63, 63);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    width: 100vw;
+  }
+  nav {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100vw;
+  }
+  
+}
