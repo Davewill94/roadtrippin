@@ -355,6 +355,7 @@ iframe {
   }
   .music-player {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 100%;
@@ -373,6 +374,13 @@ iframe {
     text-decoration:none;
     text-shadow:0px -1px 0px #2b665e;
     margin: 5px 0px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 30vh;
+    border-radius: 20px;
+    border: none;
   }
   .trip-totals-wrapper {
     width: 100%;
@@ -413,7 +421,7 @@ iframe {
     justify-content: space-around;
     color: white;
     width: 100vw;
-    padding: 30px;
+    padding: 30px 0px;
     margin: 0;
   }
   nav {
@@ -421,6 +429,11 @@ iframe {
     align-content: center;
     justify-content: space-between;
     width: 100vw;
+    margin: 0;
+  }
+
+  a {
+    margin: 0;
   }
   
 }

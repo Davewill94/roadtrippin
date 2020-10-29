@@ -19,7 +19,7 @@ function TripOverView(props) {
                     null
                 }
                 <button onClick={props.startTrip} className="buttons">
-                    Start Trip
+                    <a href="#map">Start Trip</a>
                 </button>
             </div>    
             }
