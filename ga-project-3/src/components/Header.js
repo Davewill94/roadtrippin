@@ -4,8 +4,11 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LogoImg = styled.img`
-height: 90%;
-margin-left: 60px;
+height: 100%;
+margin-left: 10vw;
+@media only screen and (max-width: 450px) {
+    margin-left: 0;
+}
 `
 
 
@@ -14,7 +17,7 @@ margin-left: 60px;
 const Header = () => {
     return (
         <div id="header">
-            <LogoImg src="./images/logo.png" alt="logo"/>
+            <LogoImg src="./images/logo2.png" alt="logo"/>
             <nav>
                 <NavLink to='/home' activeClassName="active">Home</NavLink>
                 <NavLink to='/about' activeClassName="active">About</NavLink>
