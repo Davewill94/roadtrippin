@@ -3,7 +3,7 @@ import React from 'react';
 function TripOverView(props) {
     console.log(props.playlisttime)
     return (
-        <div >
+        <div className="trip-totals-wrapper">
             {props.directionsReady && 
             <div className="trip-totals">
                 <h3>Total Distance:</h3> 
