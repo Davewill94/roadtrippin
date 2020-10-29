@@ -212,11 +212,16 @@ const Wrapper = styled.div`
 
     }
     //pans map to starting location and zooms to max
-    startTrip = () => {
-        this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
+    startTrip = async () => {
+        // console.log(this.state.routingControl._line._layers)
+        this.removeRoute()
+        await this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
             animate: true,
-            duration: 8
+            duration: 4
         });
+        this.state.routingControl.addTo(this.map).hide();
+        // this.state.routingControl.addTo(this.map);
+        // console.log(this.state.routingControl._line._layers)
     }
 
     //function handles night mode request from SpotifyAppy component
