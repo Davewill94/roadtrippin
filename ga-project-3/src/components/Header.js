@@ -8,6 +8,7 @@ height: 100%;
 margin-left: 10vw;
 @media only screen and (max-width: 450px) {
     margin-left: 0;
+    height: 50%;
 }
 `
 
