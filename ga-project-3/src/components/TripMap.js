@@ -213,15 +213,15 @@ const Wrapper = styled.div`
     }
     //pans map to starting location and zooms to max
     startTrip = async () => {
-        // console.log(this.state.routingControl._line._layers)
+        //removes route line from map to keep weird red screen from occuring
         this.removeRoute()
+        //made await to keep line from reapearing till the animation is done
         await this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
             animate: true,
             duration: 4
         });
+        //re-adds the route line back to map and surpesses leaflet built in directions
         this.state.routingControl.addTo(this.map).hide();
-        // this.state.routingControl.addTo(this.map);
-        // console.log(this.state.routingControl._line._layers)
     }
 
     //function handles night mode request from SpotifyAppy component
