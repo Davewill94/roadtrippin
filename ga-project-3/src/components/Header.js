@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const LogoImg = styled.img`
 height: 90%;
-margin-left: 25px;
+margin-left: 60px;
 `
 
 

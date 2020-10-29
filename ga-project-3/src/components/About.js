@@ -4,15 +4,18 @@ import styled from 'styled-components';
 const WrapperDiv = styled.div`
 display: flex;
 flex-direction: row;
+flex-wrap: wrap;
 text-align: left;
-justify-content: start;
+justify-content: center;
+width: 90vw;
 
 `
 
 const TextDiv = styled.div`
 display: flex;
+flex-wrap: row-wrap;
 text-align: left;
-width: 900px;
+width: 90vw;
 height:auto;
 font-size: 18px;
 padding: 15px;
