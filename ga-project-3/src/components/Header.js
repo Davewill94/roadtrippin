@@ -17,7 +17,7 @@ margin-left: 10vw;
 const Header = () => {
     return (
         <div id="header">
-            <LogoImg src="./images/logo2.png" alt="logo"/>
+            <LogoImg src="./images/Logo2.png" alt="logo"/>
             <nav>
                 <NavLink to='/home' activeClassName="active">Home</NavLink>
                 <NavLink to='/about' activeClassName="active">About</NavLink>
