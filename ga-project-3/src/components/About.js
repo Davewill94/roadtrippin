@@ -67,6 +67,7 @@ export default function About() {
                 <br></br>
                 We will provide some useful information such as total trip time, estimated travel time,
                 and average gas consumption.
+                <br></br>
                 <span class="overlay"><h4>Spotify API:</h4>
                 <img id="tripGif" src="https://media.tenor.com/images/6cc3abb6d3a1562319e217eb626612a5/tenor.gif" alt="manning"></img> 
 
