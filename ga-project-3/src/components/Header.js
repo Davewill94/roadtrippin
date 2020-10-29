@@ -8,7 +8,7 @@ height: 100%;
 margin-left: 10vw;
 @media only screen and (max-width: 450px) {
     margin-left: 0;
-    height: 50%;
+    height: 100%;
 }
 `
 
@@ -19,7 +19,7 @@ const Header = () => {
     return (
         <div id="header">
             <LogoImg src="./images/Logo2.png" alt="logo"/>
-            <nav>
+            <nav className="annoying">
                 <NavLink to='/home' activeClassName="active">Home</NavLink>
                 <NavLink to='/about' activeClassName="active">About</NavLink>
                 <NavLink to='/newTrip' activeClassName="active">New Trip</NavLink>
