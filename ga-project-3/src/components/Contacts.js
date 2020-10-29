@@ -5,8 +5,9 @@ import ContactItem from './ContactItem';
 const WrapperDiv = styled.div`
 display: flex;
 flex-direction: row;
-height: 75vh;
-justify-content: space-between;
+flex-wrap: wrap;
+width: 100%;
+justify-content: center;
 margin-top: 40px;
 `
 

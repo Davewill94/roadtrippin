@@ -6,7 +6,7 @@ const HomePage = () => {
     return (
         <div id="homepage">
             <div id="start">
-                <nav>
+                <nav className="start">
                     <Link to="/newTrip">Start a Trip</Link>
                 </nav>
             </div>

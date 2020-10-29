@@ -4,17 +4,25 @@ import styled from 'styled-components';
 const WrapperDiv = styled.div`
 display: flex;
 flex-direction: row;
+flex-wrap: wrap;
 text-align: left;
-justify-content: start;
+justify-content: center;
+width: 90vw;
+
+@media only screen and (max-width: 450px) {
+    width: 95vw;
+}
 
 `
 
 const TextDiv = styled.div`
 display: flex;
+flex-wrap: row-wrap;
 text-align: left;
-width: 900px;
+width: 90vw;
 height:auto;
 font-size: 18px;
+word-wrap: break-word;
 padding: 15px;
 border-radius: 25px;
 margin: 30px 80px 0 80px;
@@ -45,6 +53,11 @@ h4:hover + img{
 
 span {
     width: 50px;
+}
+
+@media only screen and (max-width: 450px) {
+    font-size: 14px;
+    margin: 25px 0;
 }
 `
 

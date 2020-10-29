@@ -12,7 +12,7 @@
   justify-content: space-between;
   color: white;
   width: 100vw;
-  height: 12vh;
+  height: 80px;
 
 }
 
@@ -31,6 +31,7 @@ nav {
   align-content: center;
   justify-content: space-between;
   width: 30vw;
+  margin-right: 8vw;
 }
 
 nav a:hover {
@@ -92,8 +93,14 @@ nav a:hover {
   flex-direction: column;
 }
 #start {
+  display:flex;
+  justify-content: center;
   width: 100px;
-  margin: -60px 0 0 -80px;
+  margin: auto;
+  text-align: center;
+}
+.start {
+  margin: 0;
 }
 
 nav .active {
@@ -101,22 +108,6 @@ nav .active {
   color: rgb(45, 45, 45);
   border: 2px solid rgb(28, 28, 28);
 }
-
-#links {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid rgb(60, 60, 60);
-  background: rgba(237, 248, 255, 0.687);
-  height: 40vh;
-  padding: 20px;
-  width: 30vw;
-  height: 60vh;
-  font-size: 20px;
-  padding: 15px;
-  border-radius: 25px;
-  margin-top: 100px;
-}
-
 
 .main-new-trip {
   display: flex;
@@ -293,6 +284,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 30px;
 }
 
 span {
@@ -424,16 +416,26 @@ iframe {
     padding: 30px 0px;
     margin: 0;
   }
+  
   nav {
     display: flex;
     align-content: center;
     justify-content: space-between;
     width: 100vw;
+    margin-right: 0;
+  }
+
+  #contactWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 250px;
     margin: 0;
   }
 
   a {
     margin: 0;
   }
+  
   
 }
