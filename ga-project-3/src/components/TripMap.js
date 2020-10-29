@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -13,6 +17,14 @@ import AsideLeft from './AssideLeft';
 import Directions from './Directions';
 import TripOverView from './TripOverView';
 import SpotifyApp from './Spotify/SpotifyApp';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconAnchor: [12, 40], // adjusted icons anchor location to appear correctly on map
+});
+//set marks icon to be defalut icon, should correct error in icon load
+L.Marker.prototype.options.icon = DefaultIcon;
 
 
 //styled component for map wrapper
@@ -186,19 +198,30 @@ const Wrapper = styled.div`
             zoom: 6,
             zoomControl: false
           });
+        
           //add selected map skin to the map area and set the map area
           L.tileLayer(`${this.state.maptype[this.state.currentMap].type}`, {
             detectRetina: true,
             maxZoom: 17, 
             maxNativeZoom: 17,
           }).addTo(this.map);
+          if(this.state.routingControl!==null) {
+            L.marker([this.state.waypoints[0].lat, this.state.waypoints[0].lng]).addTo(this.map);
+            L.marker([this.state.waypoints[1].lat, this.state.waypoints[1].lng]).addTo(this.map);              
+          }
+
     }
     //pans map to starting location and zooms to max
-    startTrip = () => {
-        this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
+    startTrip = async () => {
+        //removes route line from map to keep weird red screen from occuring
+        this.removeRoute()
+        //made await to keep line from reapearing till the animation is done
+        await this.map.flyTo([this.state.waypoints[0].lat, this.state.waypoints[0].lng], 14, {
             animate: true,
-            duration: 8
+            duration: 4
         });
+        //re-adds the route line back to map and surpesses leaflet built in directions
+        this.state.routingControl.addTo(this.map).hide();
     }
 
     //function handles night mode request from SpotifyAppy component
