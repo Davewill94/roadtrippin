@@ -9,9 +9,11 @@
   background: rgb(63, 63, 63);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: white;
   width: 100vw;
+  height: 12vh;
+
 }
 
 nav a {

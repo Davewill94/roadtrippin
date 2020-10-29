@@ -15,7 +15,7 @@ const contactInfo = [
     {
         name: 'Jon Vaflor',
         email: 'VaflorJonathan@JohnDeere.com',
-        states: "50",
+        states: "21",
         picture: "./images/jon.png",
         carimg: "./images/joncar.png",
         car: "Tesla Model 3 | 450hp | 116mpge"
@@ -26,7 +26,7 @@ const contactInfo = [
         states: "25",
         picture: "./images/david.png",
         carimg: "./images/davidcar.jpg",
-        car: "Porsche 911 GT3 | 280hp | 20mpg"
+        car: "Chevy 1500 | 280hp | 20mpg"
     },
     {
         name: 'Michael Manning',
