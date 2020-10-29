@@ -1,6 +1,12 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
+const LogoImg = styled.img`
+height: 90%;
+margin-left: 25px;
+`
 
 
 
@@ -8,13 +14,7 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <div id="header">
-            <h1>RoadTrippin</h1>
-            {/* <nav>
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
-                <Link to="/newTrip">New Trip</Link>
-                <Link to="/contacts">Contacts</Link>
-            </nav> */}
+            <LogoImg src="./images/logo.png" alt="logo"/>
             <nav>
                 <NavLink to='/home' activeClassName="active">Home</NavLink>
                 <NavLink to='/about' activeClassName="active">About</NavLink>
