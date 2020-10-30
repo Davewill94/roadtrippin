@@ -85,7 +85,7 @@ export default function About() {
                 <img id="tripGif" src="https://media.tenor.com/images/6cc3abb6d3a1562319e217eb626612a5/tenor.gif" alt="manning"></img> 
 
                 </span><br></br>
-                <p>This APP utilizes the Spotify API which gives you access to tons of information helping you decide which playlist or album you would like to listen to. 
+                <p>This API utilizes the Spotify API which gives you access to tons of information helping you decide which playlist or album you would like to listen to. 
                 <br></br>               
                 <a href="https://developer.spotify.com/documentation/web-api/" target="blank">  Spotify API</a>
                 </p> 
