@@ -61,7 +61,7 @@ const Wrapper = styled.div`
             tripDetails: [],
             maptype: [
                 {type: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'},
-                {type: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'},
+                {type: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'},
                 {type: 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png'}
             ],
             currentMap: 0,
