@@ -79,15 +79,14 @@ export default function About() {
                 Enter a start location and watch the app give you step by step instructions to your destination.
                 <br></br>
                 We will provide some useful information such as total trip time, estimated travel time,
-                and average gas consumption.
+                and length of playlist. 
                 <br></br>
                 <span class="overlay"><h4>Spotify API:</h4>
                 <img id="tripGif" src="https://media.tenor.com/images/6cc3abb6d3a1562319e217eb626612a5/tenor.gif" alt="manning"></img> 
 
                 </span><br></br>
-                <p>This APP utilizes the Spotify API which gives you access to the "danceability, energy, and loudness" of songs.
-                    These keywords allow you to narrow in on the exact type of roadtrip soundtrack you are looking for. 
-                               
+                <p>This travel app utilizes the Spotify API which gives you access to tons of information helping you decide which playlist or album you would like to listen to. 
+                <br></br>               
                 <a href="https://developer.spotify.com/documentation/web-api/" target="blank">  Spotify API</a>
                 </p> 
 
@@ -96,7 +95,6 @@ export default function About() {
 
                 </span><br></br>
                 <p>The map portion of this app was creating using Leaflet React. <br></br>
-                One issue with using leaflet is the server seemed to go down every day between 11am-2pm. 
                 <a href="https://react-leaflet.js.org/?_sm_au_=iVVF1T4WqPf0JLJNL321jK0f1JH33" target="blank">React Leaflet API</a>
                 </p>
 
